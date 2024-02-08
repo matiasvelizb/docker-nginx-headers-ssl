@@ -1,0 +1,21 @@
+services:
+  nginx:
+    container_name: 'custom-nginx'
+    restart: unless-stopped
+    image: '${REMOTE_REGISTRY_HOST}/${SERVICE_NAME}:${BUILD_VERSION}'
+    build:
+      context: ${BUILD_ROOT}
+      dockerfile: ${CONTAINERS_ROOT}/nginx/build/Dockerfile
+      target: custom-nginx
+      args:
+        NGINX_VERSION: '${NGINX_VERSION}'
+        NGINX_HEADERS_MORE_VERSION: '${NGINX_HEADERS_MORE_VERSION}'
+    volumes:
+      - '${CONTAINERS_ROOT}/nginx/configuration/nginx.conf:/etc/nginx/nginx.conf'
+    ports:
+      - 8080:80
+      - 443:443
+    environment:
+      NGINX_ENVSUBST_TEMPLATE_DIR: /etc/nginx/templates
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d
+      NGINX_ENVSUBST_TEMPLATE_SUFFIX: .template
