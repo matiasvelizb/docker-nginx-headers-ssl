@@ -2,7 +2,7 @@ services:
   nginx:
     container_name: 'custom-nginx'
     restart: unless-stopped
-    image: '${REMOTE_REGISTRY_HOST}/${SERVICE_NAME}:${BUILD_VERSION}'
+    image: '${REMOTE_REGISTRY_HOST}${REMOTE_REGISTRY_HOST:+/}${SERVICE_NAME}:${BUILD_VERSION}'
     build:
       context: ${BUILD_ROOT}
       dockerfile: ${CONTAINERS_ROOT}/nginx/build/Dockerfile
