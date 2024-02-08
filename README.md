@@ -12,12 +12,17 @@ Follow these steps to set up and run the custom Nginx container:
     cd docker-nginx-headers-ssl
     ```
 
-2. **Build the Docker Image:**
+2. **Copy the Environment File:**
+    ```bash
+    cp .env_example .env
+    ```
+
+3. **Build the Docker Image:**
     ```bash
     docker-compose build --no-cache
     ```
 
-3. **Start the Nginx Server:**
+4. **Start the Nginx Server:**
     ```bash
     docker-compose up
     ```
