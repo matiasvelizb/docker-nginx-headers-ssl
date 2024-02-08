@@ -6,14 +6,14 @@ services:
     build:
       context: ${BUILD_ROOT}
       dockerfile: ${CONTAINERS_ROOT}/nginx/build/Dockerfile
-      target: custom-nginx
+      target: ${SERVICE_NAME}
       args:
         NGINX_VERSION: '${NGINX_VERSION}'
         NGINX_HEADERS_MORE_VERSION: '${NGINX_HEADERS_MORE_VERSION}'
     volumes:
       - '${CONTAINERS_ROOT}/nginx/configuration/nginx.conf:/etc/nginx/nginx.conf'
     ports:
-      - 8080:80
+      - ${NGINX_PORT}:80
       - 443:443
     environment:
       NGINX_ENVSUBST_TEMPLATE_DIR: /etc/nginx/templates
