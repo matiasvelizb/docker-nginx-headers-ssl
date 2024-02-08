@@ -6,7 +6,7 @@ services:
     build:
       context: ${BUILD_ROOT}
       dockerfile: ${CONTAINERS_ROOT}/nginx/build/Dockerfile
-      target: ${SERVICE_NAME}
+      target: secure-nginx
       args:
         NGINX_VERSION: '${NGINX_VERSION}'
         NGINX_HEADERS_MORE_VERSION: '${NGINX_HEADERS_MORE_VERSION}'

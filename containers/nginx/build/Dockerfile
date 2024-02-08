@@ -54,7 +54,7 @@ RUN HEADERSMOREDIR="/usr/src/headers-more-nginx-module-${NGINX_HEADERS_MORE_VERS
     ./configure --without-http_autoindex_module --with-compat $CONFARGS --add-dynamic-module=$HEADERSMOREDIR && \
     make && make install
 
-FROM nginx:${NGINX_VERSION}-alpine as custom-nginx
+FROM nginx:${NGINX_VERSION}-alpine as secure-nginx
 
 # ---------------------------------------------------------------------------- #
 #              COPY: NGINX - BUILD OUTPUT FROM HEADERS MORE MODULE             #
