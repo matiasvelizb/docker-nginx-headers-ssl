@@ -1,6 +1,6 @@
 services:
   nginx:
-    container_name: 'custom-nginx'
+    container_name: ${SERVICE_NAME}
     restart: unless-stopped
     image: '${REMOTE_REGISTRY_HOST}${REMOTE_REGISTRY_HOST:+/}${SERVICE_NAME}:${BUILD_VERSION}'
     build:
